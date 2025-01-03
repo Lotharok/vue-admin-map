@@ -76,8 +76,8 @@
    import { computed, defineComponent } from "vue";
    import { useRoute } from "vue-router";
 
-   import { useConfigStore } from "../../../../stores/config";
-   import { useThemeStore } from "../../../../stores/theme";
+   import { useConfigStore } from "@/stores/config";
+   import { useThemeStore } from "@/stores/theme";
 
    export default defineComponent({
       name: "KtThemeSwitcher",

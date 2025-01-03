@@ -20,7 +20,7 @@
             <div class="d-flex flex-column">
                <div class="fw-bold d-flex align-items-center fs-5">Max Smith</div>
                <a
-                  href="#"
+                  href=""
                   class="fw-semibold text-muted text-hover-primary fs-7"
                   >max@kt.com</a
                >
@@ -104,8 +104,8 @@
       <!--begin::Menu item-->
       <div class="menu-item px-5">
          <a
+            href="sign-out"
             class="menu-link px-5"
-            @click="signOut()"
          >
             Sign Out
          </a>
@@ -118,27 +118,15 @@
 <script lang="ts">
    import i18next from "i18next";
    import { defineComponent } from "vue";
-   import { useRouter } from "vue-router";
 
-   import { getAssetPath } from "../../../../core/helpers/assets";
-   //import { useAuthStore } from "../../../../stores/auth";
+   import { getAssetPath } from "@/core/helpers/assets";
 
    export default defineComponent({
       name: "KtUserMenu",
       components: {},
       setup() {
-         const router = useRouter();
-         //onst store = useAuthStore();
-
          i18next.changeLanguage(localStorage.getItem("lang") ? (localStorage.getItem("lang") as string) : "es-mx");
-
-         const signOut = () => {
-            //store.logout();
-            router.push({ name: "sign-in" });
-         };
-
          return {
-            signOut,
             getAssetPath,
          };
       },

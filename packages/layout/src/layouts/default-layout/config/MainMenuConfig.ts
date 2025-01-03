@@ -1,4 +1,4 @@
-import type { MenuItem } from "@layouts/default-layout/config/types";
+import type { MenuItem } from "@/layouts/default-layout/config/types";
 
 const MainMenuConfig: Array<MenuItem> = [
    {
