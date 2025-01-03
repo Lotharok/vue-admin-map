@@ -66,10 +66,10 @@
 <script lang="ts">
    import { defineComponent } from "vue";
 
-   import { getAssetPath } from "../../../../core/helpers/assets";
-   import { headerWidthFluid } from "../../config/helper";
-   import KTMenu from "../header/Menu.vue";
-   import KTTopbar from "../header/Topbar.vue";
+   import { getAssetPath } from "@/core/helpers/assets";
+   import KTMenu from "@/layouts/default-layout/components/header/Menu.vue";
+   import KTTopbar from "@/layouts/default-layout/components/header/Topbar.vue";
+   import { headerWidthFluid } from "@/layouts/default-layout/config/helper";
 
    export default defineComponent({
       name: "KTHeader",

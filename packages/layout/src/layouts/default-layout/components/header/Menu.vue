@@ -189,8 +189,8 @@
    import { defineComponent } from "vue";
    import { useRoute } from "vue-router";
 
-   import { getAssetPath } from "../../../../core/helpers/assets";
-   import MainMenuConfig from ".././../config/MainMenuConfig";
+   import { getAssetPath } from "@/core/helpers/assets";
+   import MainMenuConfig from "@/layouts/default-layout/config/MainMenuConfig";
 
    export default defineComponent({
       name: "KTMenu",

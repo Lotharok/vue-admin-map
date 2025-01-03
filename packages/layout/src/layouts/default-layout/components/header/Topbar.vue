@@ -79,9 +79,9 @@
 <script lang="ts">
    import { defineComponent } from "vue";
 
-   import { getAssetPath } from "../../../../core/helpers/assets";
-   import KTUserMenu from "../menus/UserAccountMenu.vue";
-   import KTThemeModeSwitcher from "../theme-mode/ThemeModeSwitcher.vue";
+   import { getAssetPath } from "@/core/helpers/assets";
+   import KTUserMenu from "@/layouts/default-layout/components/menus/UserAccountMenu.vue";
+   import KTThemeModeSwitcher from "@/layouts/default-layout/components/theme-mode/ThemeModeSwitcher.vue";
 
    export default defineComponent({
       name: "LayoutTopbar",

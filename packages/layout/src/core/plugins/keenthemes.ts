@@ -7,9 +7,9 @@ import {
    StickyComponent,
    SwapperComponent,
    ToggleComponent,
-} from "../../assets/ts/components";
-import { ThemeModeComponent } from "../../assets/ts/layout";
-import KTIcon from "../helpers/kt-icon/KTIcon.vue";
+} from "@/assets/ts/components";
+import { ThemeModeComponent } from "@/assets/ts/layout";
+import KTIcon from "@/core/helpers/kt-icon/KTIcon.vue";
 
 /**
  * @description Initialize KeenThemes custom components
