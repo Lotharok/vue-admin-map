@@ -1,0 +1,20 @@
+{
+   "home": {
+      "description": "Admin 2.0 es la solución que tu equipo necesita para agilizar la administración de servicios turísticos como traslados, renta de autos, actividades y seguros. Organiza contratos, tarifas, políticas de cancelación y más, todo en un solo lugar, con un acceso rápido y sencillo."
+   },
+   "userAccountMenu": {
+      "es-mx": "Español",
+      "en-us": "Inlges",
+      "language": "Lenguaje"
+   },
+   "menu": {
+      "transfers": "Traslados",
+      "tours": "Tours",
+      "cars": "Autos"
+   },
+   "theme": {
+      "light": "Claro",
+      "dark": "Oscuro",
+      "system": "Sistema"
+   }
+}

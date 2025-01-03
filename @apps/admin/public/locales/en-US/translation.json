@@ -1,0 +1,20 @@
+{
+   "home": {
+      "description": "Admin 2.0 is the solution your team needs to streamline the management of tourism services such as transfers, car rentals, activities, and insurance. Organize contracts, rates, cancellation policies, and more, all in one place, with quick and easy access."
+   },
+   "userAccountMenu": {
+      "es-mx": "Spanish",
+      "en-us": "English",
+      "language": "Language"
+   },
+   "menu": {
+      "transfers": "Transfers",
+      "tours": "Tours",
+      "cars": "Cars"
+   },
+   "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+   }
+}

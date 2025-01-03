@@ -1,0 +1,27 @@
+{
+   "name": "@admin/layout",
+   "private": true,
+   "version": "0.0.0",
+   "type": "module",
+   "module": "./dist/layout.js",
+   "types": "./dist/main.d.ts",
+   "style": "./dist/layout.css",
+   "files": [
+      "dist"
+   ],
+   "scripts": {
+      "dev": "npm run lint && vite build --watch",
+      "build": "npm run lint && vue-tsc -b && vite build",
+      "builddev": "npm run lint && vue-tsc -b && vite build --mode development",
+      "lint": "eslint . --report-unused-disable-directives --max-warnings 0"
+   },
+   "dependencies": {
+      "@popperjs/core": "^2.11.8",
+      "i18next": "catalog:",
+      "i18next-vue": "catalog:",
+      "object-path": "^0.11.8",
+      "pinia": "catalog:",
+      "vue": "catalog:",
+      "vue-router": "catalog:"
+   }
+}
