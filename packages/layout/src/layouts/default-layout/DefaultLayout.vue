@@ -36,7 +36,7 @@
       </div>
    </div>
    <!-- end:: Body -->
-   <!--<KTScrollTop />-->
+   <KTScrollTop />
 </template>
 
 <script lang="ts">
@@ -45,6 +45,7 @@
 
    import { reinitializeComponents } from "@/core/plugins/keenthemes";
    import LayoutService from "@/core/services/LayoutService";
+   import KTScrollTop from "@/layouts/default-layout/components/extras/ScrollTop.vue";
    import KTHeader from "@/layouts/default-layout/components/header/Header.vue";
    import { contentWidthFluid } from "@/layouts/default-layout/config/helper";
 
@@ -52,6 +53,7 @@
       name: "DefaultLayout",
       components: {
          KTHeader,
+         KTScrollTop,
       },
       setup() {
          const route = useRoute();

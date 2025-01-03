@@ -1,7 +1,6 @@
 import { config } from "@/config";
-
-import { illustrationsSet } from "../../layouts/default-layout/config/helper";
-import { useThemeStore } from "../../stores/theme";
+import { illustrationsSet } from "@/layouts/default-layout/config/helper";
+import { useThemeStore } from "@/stores/theme";
 
 export const getIllustrationsPath = (illustrationName: string): string => {
    const extension = illustrationName.substring(illustrationName.lastIndexOf("."), illustrationName.length);

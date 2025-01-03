@@ -9,6 +9,7 @@
       "dev": "pnpm --recursive --parallel --stream run dev"
    },
    "devDependencies": {
+      "@types/bootstrap": "^5.2.10",
       "@types/node": "^22.10.2",
       "@types/object-path": "^0.11.4",
       "@typescript-eslint/eslint-plugin": "^8.18.2",

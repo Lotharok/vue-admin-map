@@ -7,7 +7,7 @@
    import { defineComponent, nextTick, onBeforeMount, onMounted } from "vue";
    import { RouterView } from "vue-router";
 
-   import { i18nextPromise } from "../i18n";
+   import { i18nextPromise } from "@/i18n";
 
    export default defineComponent({
       name: "RootApp",
