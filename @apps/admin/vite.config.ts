@@ -21,7 +21,7 @@ export default (opts: { mode: string }) => {
                chunkFileNames: "[name]-[hash].js",
                manualChunks: (id) => {
                   if (id.includes("/mocks/")) {
-                     return "browser";
+                     return "mocks";
                   }
                   if (id.includes("/layout/")) {
                      return "layout";

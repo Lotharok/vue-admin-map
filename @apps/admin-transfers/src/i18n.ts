@@ -3,7 +3,7 @@ import Backend from "i18next-http-backend";
 import I18NextVue from "i18next-vue";
 import { App } from "vue";
 
-i18next.use(Backend).init({
+export const i18nextPromise = i18next.use(Backend).init({
    debug: import.meta.env.VITE_IS_DEBUG === "true",
    fallbackLng: "es-mx",
    load: "currentOnly",

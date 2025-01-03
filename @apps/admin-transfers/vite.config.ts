@@ -22,10 +22,13 @@ export default (opts: { mode: string }) => {
                chunkFileNames: "[name]-[hash].js",
                manualChunks: (id) => {
                   if (id.includes("/mocks/")) {
-                     return "browser";
+                     return "mocks";
                   }
                   if (id.includes("/leaflet/") || id.includes("/vue-leaflet/")) {
                      return "vendor-map";
+                  }
+                  if (id.includes("/layout/")) {
+                     return "layout";
                   }
                   if (
                      id.includes("/vue/") ||

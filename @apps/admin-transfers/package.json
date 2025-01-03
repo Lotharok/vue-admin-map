@@ -10,6 +10,7 @@
       "lint": "eslint . --report-unused-disable-directives --max-warnings 0"
    },
    "dependencies": {
+      "bootstrap": "catalog:",
       "i18next": "catalog:",
       "i18next-http-backend": "catalog:",
       "i18next-vue": "catalog:",
