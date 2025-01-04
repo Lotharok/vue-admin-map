@@ -1,4 +1,4 @@
-import {DefaultLayout} from "@admin/layout";
+import { DefaultLayout } from "@admin/layout";
 import { createRouter, createWebHistory, type RouteRecordRaw } from "vue-router";
 
 import { config } from "@/config";
@@ -10,22 +10,39 @@ const routes: Array<RouteRecordRaw> = [
       meta: {},
       children: [
          {
-            path: "/transfers",
-            name: "home",
-            component: () => import("@/components/HomeView.vue"),
+            path: "",
+            redirect: "/transfers/home",
+            name: "transfers-layout",
+            component: () => import("@/components/PageLayout.vue"),
             meta: {
-               pageTitle: "Home",
                breadcrumbs: [],
             },
-         },
-         {
-            path: "/transfers/about",
-            name: "about",
-            component: () => import("@/components/AboutView.vue"),
-            meta: {
-               pageTitle: "About",
-               breadcrumbs: [],
-            },
+            children: [
+               {
+                  path: "home",
+                  name: "transfers-home",
+                  component: () => import("@/views/Home.vue"),
+                  meta: {
+                     pageTitle: "Transfer Contracts",
+                  },
+               },
+               {
+                  path: "contracts",
+                  name: "transfers-contracts",
+                  component: () => import("@/views/contracts/Contracts.vue"),
+                  meta: {
+                     pageTitle: "Transfer Contracts",
+                  },
+               },
+               {
+                  path: "zones",
+                  name: "transfers-zones",
+                  component: () => import("@/views/zones/Zones.vue"),
+                  meta: {
+                     pageTitle: "Transfer Zones",
+                  },
+               },
+            ],
          },
       ],
    },
