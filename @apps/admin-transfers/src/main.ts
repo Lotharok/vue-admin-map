@@ -8,6 +8,14 @@ import { createApp } from "vue";
 import router from "./router.ts";
 
 (async () => {
+   const useMocks = import.meta.env.VITE_USE_MOCKS === "true";
+   if (useMocks) {
+      const { worker } = await import("../../../mocks/browser.ts");
+      await worker.start({
+         onUnhandledRequest: "bypass",
+      });
+   }
+
    const pinia = createPinia();
    const app = i18n(
       createApp(App),

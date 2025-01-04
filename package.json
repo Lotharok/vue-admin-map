@@ -10,6 +10,7 @@
    },
    "devDependencies": {
       "@types/bootstrap": "^5.2.10",
+      "@types/geojson": "^7946.0.15",
       "@types/node": "^22.10.2",
       "@types/object-path": "^0.11.4",
       "@typescript-eslint/eslint-plugin": "^8.18.2",
@@ -21,6 +22,7 @@
       "eslint-plugin-simple-import-sort": "^12.1.1",
       "eslint-plugin-vue": "^9.32.0",
       "globals": "^15.14.0",
+      "msw": "^2.7.0",
       "prettier": "^3.4.2",
       "typescript": "~5.6.2",
       "typescript-eslint": "^8.18.2",

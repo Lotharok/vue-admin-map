@@ -3,7 +3,7 @@
    "references": [
       { "path": "./tsconfig.app.json" },
       {
-         "path": "@admin/layout"
+         "path": "packages/layout"
       }
    ]
 }
