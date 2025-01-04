@@ -22,7 +22,7 @@ export const i18nextPromise = i18next.use(Backend).init({
    },
 });
 
-export const i18n = function (app: App, i18Path: string, i18Version: string, isDebug: boolean) {
+export default function (app: App, i18Path: string, i18Version: string, isDebug: boolean) {
    _isDebug = isDebug;
    _i18Version = i18Version;
    _i18Path = i18Path;

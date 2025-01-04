@@ -1,6 +1,6 @@
 import { initKtIcon } from "@admin/layout";
 import { App } from "@admin/layout";
-import { i18n } from "@admin/layout";
+import { i18Config } from "@admin/layout";
 import { Tooltip } from "bootstrap";
 import { createPinia } from "pinia";
 import { createApp } from "vue";
@@ -9,7 +9,7 @@ import router from "./router.ts";
 
 (async () => {
    const pinia = createPinia();
-   const app = i18n(
+   const app = i18Config(
       createApp(App),
       import.meta.env.VITE_I18_PATH,
       import.meta.env.VITE_I18_VERSION,
