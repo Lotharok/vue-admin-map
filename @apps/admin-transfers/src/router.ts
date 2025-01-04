@@ -1,13 +1,34 @@
-import { createRouter, createWebHistory } from "vue-router";
+import {DefaultLayout} from "@admin/layout";
+import { createRouter, createWebHistory, type RouteRecordRaw } from "vue-router";
 
 import { config } from "@/config";
 
-import AboutView from "./components/AboutView.vue";
-import HomeView from "./components/HomeView.vue";
-
-const routes = [
-   { path: "/transfers", component: HomeView },
-   { path: "/transfers/about", component: AboutView },
+const routes: Array<RouteRecordRaw> = [
+   {
+      path: "/transfers",
+      component: DefaultLayout,
+      meta: {},
+      children: [
+         {
+            path: "/transfers",
+            name: "home",
+            component: () => import("@/components/HomeView.vue"),
+            meta: {
+               pageTitle: "Home",
+               breadcrumbs: [],
+            },
+         },
+         {
+            path: "/transfers/about",
+            name: "about",
+            component: () => import("@/components/AboutView.vue"),
+            meta: {
+               pageTitle: "About",
+               breadcrumbs: [],
+            },
+         },
+      ],
+   },
 ];
 
 const router = createRouter({

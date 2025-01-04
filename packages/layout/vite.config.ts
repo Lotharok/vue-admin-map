@@ -10,7 +10,7 @@ export default (opts: { mode: string }) => {
    return defineConfig({
       resolve: {
          alias: {
-            "@":  path.resolve(__dirname, "./src"),
+            "@": path.resolve(__dirname, "./src"),
          },
       },
       build: {
@@ -21,7 +21,7 @@ export default (opts: { mode: string }) => {
             name: "layout",
          },
          rollupOptions: {
-            external: ["vue", "vue-router", "pinia", "i18next", "i18next-vue"],
+            external: ["vue", "vue-router", "pinia", "i18next", "i18next-vue", "i18next-http-backend"],
             output: {
                globals: {
                   Vue: "vue",

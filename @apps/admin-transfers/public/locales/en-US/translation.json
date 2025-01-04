@@ -1,0 +1,17 @@
+{
+   "userAccountMenu": {
+      "es-mx": "Spanish",
+      "en-us": "English",
+      "language": "Language"
+   },
+   "menu": {
+      "transfers": "Transfers",
+      "tours": "Tours",
+      "cars": "Cars"
+   },
+   "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+   }
+}

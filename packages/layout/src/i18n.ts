@@ -3,8 +3,12 @@ import Backend from "i18next-http-backend";
 import I18NextVue from "i18next-vue";
 import { App } from "vue";
 
+let _isDebug = true;
+let _i18Version = "1";
+let _i18Path = "/locales";
+
 export const i18nextPromise = i18next.use(Backend).init({
-   debug: import.meta.env.VITE_IS_DEBUG === "true",
+   debug: _isDebug,
    fallbackLng: "es-mx",
    load: "currentOnly",
    interpolation: {
@@ -12,14 +16,16 @@ export const i18nextPromise = i18next.use(Backend).init({
    },
    backend: {
       loadPath: (lng: string, ns: string) => {
-         const version = import.meta.env.VITE_I18_VERSION;
-         return import.meta.env.VITE_I18_PATH + `/${lng}/${ns}.json?v=${version}`;
+         return _i18Path + `/${lng}/${ns}.json?v=${_i18Version}`;
       },
       crossDomain: true,
    },
 });
 
-export default function (app: App) {
+export const i18n = function (app: App, i18Path: string, i18Version: string, isDebug: boolean) {
+   _isDebug = isDebug;
+   _i18Version = i18Version;
+   _i18Path = i18Path;
    app.use(I18NextVue, { i18next });
    return app;
-}
+};

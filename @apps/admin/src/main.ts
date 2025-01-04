@@ -1,20 +1,25 @@
 import { initKtIcon } from "@admin/layout";
+import { App } from "@admin/layout";
+import { i18n } from "@admin/layout";
 import { Tooltip } from "bootstrap";
 import { createPinia } from "pinia";
 import { createApp } from "vue";
 
-import App from "./App.vue";
-import i18n from "./i18n.ts";
 import router from "./router.ts";
 
 (async () => {
    const pinia = createPinia();
-   const app = i18n(createApp(App));
+   const app = i18n(
+      createApp(App),
+      import.meta.env.VITE_I18_PATH,
+      import.meta.env.VITE_I18_VERSION,
+      import.meta.env.VITE_IS_DEBUG === "true",
+   );
    app.use(pinia);
    app.use(router);
    initKtIcon(app);
    app.directive("tooltip", (el) => {
       new Tooltip(el);
-    });
+   });
    app.mount("#app-admin");
 })();

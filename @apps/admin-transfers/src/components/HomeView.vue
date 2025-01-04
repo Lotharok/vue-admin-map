@@ -4,7 +4,7 @@
       },
       methods: {
          goToAbout() {
-            this.$router.push("/about");
+            this.$router.push("/transfers/about");
          },
       },
    };
