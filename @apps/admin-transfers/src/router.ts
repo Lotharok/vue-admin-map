@@ -42,6 +42,14 @@ const routes: Array<RouteRecordRaw> = [
                      pageTitle: "Transfer Zones",
                   },
                },
+               {
+                  path: "zones/:id",
+                  name: "transfer-zones-edith",
+                  component: () => import("@/views/zones/ZoneEditor.vue"),
+                  meta: {
+                     pageTitle: "Transfer Zone"
+                  },
+               },
             ],
          },
       ],

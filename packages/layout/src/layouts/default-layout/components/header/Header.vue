@@ -27,8 +27,10 @@
             <!--end::Aside mobile toggle-->
 
             <!--begin::Logo-->
-            <router-link to="/">
-               <img
+            <a
+               :href="appUrl"
+               class="router-link-active router-link-exact-active"
+               ><img
                   alt="Logo"
                   :src="getAssetPath('media/logos/demo5.svg')"
                   class="d-none d-lg-inline h-30px"
@@ -38,7 +40,7 @@
                   :src="getAssetPath('media/logos/demo5-mobile.svg')"
                   class="d-lg-none h-25px"
                />
-            </router-link>
+            </a>
             <!--end::Logo-->
          </div>
          <!--end::Brand-->
@@ -66,6 +68,7 @@
 <script lang="ts">
    import { defineComponent } from "vue";
 
+   import { config } from "@/config";
    import { getAssetPath } from "@/core/helpers/assets";
    import KTMenu from "@/layouts/default-layout/components/header/Menu.vue";
    import KTTopbar from "@/layouts/default-layout/components/header/Topbar.vue";
@@ -78,7 +81,9 @@
          KTMenu,
       },
       setup() {
+         const appUrl = config.appUrl;
          return {
+            appUrl,
             headerWidthFluid,
             getAssetPath,
          };
