@@ -24,7 +24,7 @@ export default (opts: { mode: string }) => {
                   if (id.includes("/mocks/")) {
                      return "mocks";
                   }
-                  if (id.includes("/leaflet/") || id.includes("/vue-leaflet/")) {
+                  if (id.includes("/leaflet/") || id.includes("/leaflet-draw/") || id.includes("/vue-leaflet/")) {
                      return "vendor-map";
                   }
                   if (id.includes("/layout/")) {
@@ -36,6 +36,7 @@ export default (opts: { mode: string }) => {
                      id.includes("/i18next/") ||
                      id.includes("/pinia/") ||
                      id.includes("/jose/") ||
+                     id.includes("/axios/") ||
                      id.includes("/swiper/")
                   ) {
                      return "vendor";

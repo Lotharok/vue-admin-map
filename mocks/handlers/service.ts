@@ -2,8 +2,8 @@
 // @ts-nocheck
 import { delay, http, HttpResponse } from "msw";
 
+import type { Zone } from "../../@apps/admin-transfers/src/types/types";
 import { mockZones } from "../data/zones";
-import type { Zone } from "../types/types";
 
 const apiTransferUrl = "https://api-transfer.web-travel.com/api";
 
@@ -22,13 +22,13 @@ const getZones = () => {
 
 export const service = [
    // Recuperar todas las zonas
-   http.get(apiTransferUrl + "/zones", async () => {
+   http.get(`${apiTransferUrl}/zones`, async () => {
       await delay(500);
       return HttpResponse.json(getZones(), { status: 200 });
    }),
 
    // Recuperar una zona
-   http.get(apiTransferUrl + "/zones/:id", async (req) => {
+   http.get(`${apiTransferUrl}/zones/:id`, async (req) => {
       const { id } = req.params;
       const zone = mockZones.find(({ zone_id }) => zone_id === Number(id));
       await delay(500);
@@ -36,7 +36,7 @@ export const service = [
    }),
 
    // Agregar una nueva zona
-   http.post(apiTransferUrl + "/zones", async (req) => {
+   http.post(`${apiTransferUrl}/zones`, async (req) => {
       const newZone: Zone = await req.request.json();
       newZone.zone_id = mockZones.length + 1; // Asignar un ID único
       newZone.dt_created = new Date().toISOString();
@@ -47,7 +47,7 @@ export const service = [
    }),
 
    // Editar una zona existente
-   http.put(apiTransferUrl + "/zones/:id", async (req) => {
+   http.put(`${apiTransferUrl}/zones/:id`, async (req) => {
       const { id } = req.params;
       const updatedZone: Partial<Zone> = await req.request.json();
       let zone = mockZones.find(({ zone_id }) => zone_id === Number(id));
@@ -59,7 +59,7 @@ export const service = [
    }),
 
    // Eliminar una zona
-   http.delete(apiTransferUrl + "/zones/:id", (req, res, ctx) => {
+   http.delete(`${apiTransferUrl}/zones/:id`, (req, res, ctx) => {
       const { id } = req.params;
       const zoneIndex = mockZones.findIndex((zone) => zone.zone_id === Number(id));
       if (zoneIndex === -1) {

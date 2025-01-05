@@ -1,4 +1,4 @@
-import type { Zone } from "../types/types";
+import type { Zone } from "../../@apps/admin-transfers/src/types/types";
 
 export const mockZones: Zone[] = [
    {
