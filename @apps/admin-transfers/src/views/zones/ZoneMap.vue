@@ -16,8 +16,9 @@
    import "leaflet/dist/leaflet.css";
    import "leaflet-draw/dist/leaflet.draw.css";
 
+   import { Polygon } from "geojson";
    import L from "leaflet";
-   import { defineComponent, onMounted, ref, watch } from "vue";
+   import { defineComponent, onMounted, PropType, ref, watch } from "vue";
 
    import { useZoneStore } from "@/stores/zoneStore";
 
@@ -25,7 +26,7 @@
       name: "ZoneMap",
       props: {
          currentPolygon: {
-            type: Object,
+            type: Object as PropType<Polygon>,
             default: null,
          },
       },
@@ -35,7 +36,7 @@
          const map = ref<L.Map | null>(null);
          const drawnItems = new L.FeatureGroup();
          const polygons = ref<L.LayerGroup | null>(null); // Capa para los polígonos
-
+         let drawControl: L.Control.Draw;
          const getMap = () => {
             return map.value as L.Map;
          };
@@ -71,16 +72,53 @@
          // Establecer el polígono actual si se pasa desde el padre
          // eslint-disable-next-line @typescript-eslint/no-explicit-any
          const setPolygon = (polygon: any) => {
-            if (polygon && map.value) {
-               // El polígono pasado desde el padre es un objeto Leaflet
-               const geoJsonLayer = L.geoJSON(polygon, {
-                  style: { color: "red", weight: 3 },
-                  onEachFeature: function (feature, layer) {
-                     console.log(feature);
-                     layer.addTo(drawnItems);
+            if (map.value) {
+               const drawConfig: L.Control.DrawOptions = {
+                  polyline: false,
+                  rectangle: false,
+                  circle: false,
+                  marker: false,
+                  circlemarker: false,
+               };
+
+               if (polygon) {
+                  drawConfig.polygon = false;
+                  // El polígono pasado desde el padre es un objeto Leaflet
+                  const geoJsonLayer = L.geoJSON(polygon, {
+                     style: { color: "red", weight: 3 },
+                     onEachFeature: function (feature, layer) {
+                        console.log(feature);
+                        layer.addTo(drawnItems);
+                     },
+                  })
+                     .bindPopup(
+                        `
+          `,
+                     )
+                     .addTo(getMap());
+                  map.value?.fitBounds(geoJsonLayer.getBounds()); // Ajustar el mapa para ver el polígono
+               }
+               if (drawControl) {
+                  map.value.removeControl(drawControl);
+               }
+
+               // Control de dibujo
+               drawControl = new L.Control.Draw({
+                  edit: {
+                     featureGroup: drawnItems,
                   },
-               }).addTo(getMap());
-               map.value?.fitBounds(geoJsonLayer.getBounds()); // Ajustar el mapa para ver el polígono
+                  draw: drawConfig,
+               });
+
+               map.value.addControl(drawControl);
+
+               // Evento de dibujo
+               // eslint-disable-next-line @typescript-eslint/no-explicit-any
+               map.value.on(L.Draw.Event.CREATED, (event: any) => {
+                  const layer = event.layer;
+                  drawnItems.addLayer(layer);
+                  handlePolygonDrawn(layer); // Emitir el polígono cuando se dibuja
+               });
             }
          };
 
@@ -105,30 +143,6 @@
             L.control
                .layers(undefined, { "Draw Layer": drawnItems, Zonas: polygons.value as L.LayerGroup })
                .addTo(getMap());
-
-            // Control de dibujo
-            const drawControl = new L.Control.Draw({
-               edit: {
-                  featureGroup: drawnItems,
-               },
-               draw: {
-                  polyline: false,
-                  rectangle: false,
-                  circle: false,
-                  marker: false,
-                  circlemarker: false,
-               },
-            });
-
-            map.value.addControl(drawControl);
-
-            // Evento de dibujo
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            map.value.on(L.Draw.Event.CREATED, (event: any) => {
-               const layer = event.layer;
-               drawnItems.addLayer(layer);
-               handlePolygonDrawn(layer); // Emitir el polígono cuando se dibuja
-            });
 
             renderZones(); // Renderizar las zonas cargadas desde el store
             setPolygon(props.currentPolygon); // Si hay un polígono a editar, se carga

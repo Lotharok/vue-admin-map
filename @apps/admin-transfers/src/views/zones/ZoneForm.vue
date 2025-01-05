@@ -71,6 +71,7 @@
 </template>
 
 <script lang="ts">
+   import type { Polygon } from "geojson";
    import L from "leaflet";
    import { defineComponent, PropType, reactive, ref, watch } from "vue";
 
@@ -86,7 +87,7 @@
             required: false,
          },
          currentPolygon: {
-            type: Object,
+            type: Object as PropType<Polygon>,
             default: null,
             required: false,
          },
@@ -107,8 +108,7 @@
          // Validar polígono con la función del store
          watch(
             () => props.currentPolygon,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            async (polygon: any) => {
+            async (polygon: Polygon) => {
                if (polygon) {
                   isPolygonValid.value = await zoneStore.validatePolygon(L.geoJSON(polygon));
                } else {
