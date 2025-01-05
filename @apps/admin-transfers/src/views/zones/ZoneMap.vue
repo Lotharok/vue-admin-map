@@ -66,7 +66,7 @@
 
          // Establecer el polígono actual si se pasa desde el padre
          const setPolygon = (polygon) => {
-            if (polygon) {
+            if (polygon && map.value) {
                // El polígono pasado desde el padre es un objeto Leaflet
                const geoJsonLayer = L.geoJSON(polygon, {
                   style: { color: "red", weight: 3 },

@@ -1,12 +1,18 @@
 <script lang="ts">
    import { defineComponent } from "vue";
 
+   import { getAssetPath } from "@/core/helpers/assets";
    import Root from "@/views/Root.vue";
 
    export default defineComponent({
       name: "App",
       components: {
          Root,
+      },
+      setup() {
+         return {
+            getAssetPath,
+         };
       },
    });
 </script>
@@ -20,12 +26,12 @@
             class="splash-screen"
          >
             <img
-               src="https://test-b2b2c-assets.s3.us-east-1.amazonaws.com/Scripts/admin-complementarios/media/logos/demo5-dark.svg"
+               :src="getAssetPath('media/logos/demo5-dark.svg')"
                class="dark-logo"
                alt="App dark logo"
             />
             <img
-               src="https://test-b2b2c-assets.s3.us-east-1.amazonaws.com/Scripts/admin-complementarios/media/logos/demo5.svg"
+               :src="getAssetPath('media/logos/demo5.svg')"
                class="light-logo"
                alt="App light logo"
             />
