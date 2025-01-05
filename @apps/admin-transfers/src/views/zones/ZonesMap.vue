@@ -26,9 +26,9 @@
             // Cargar un tile layer de OpenStreetMap
             L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
                attribution: "&copy; OpenStreetMap contributors",
-            }).addTo(zonesMap.value);
+            }).addTo(zonesMap.value as L.Map);
 
-            polygons.value = L.layerGroup().addTo(zonesMap.value); // Crear capa para los polígonos
+            polygons.value = L.layerGroup().addTo(zonesMap.value as L.Map); // Crear capa para los polígonos
          };
 
          // Renderizar los polígonos desde el store
@@ -46,13 +46,13 @@
             Zoom: ${zone.zoom_level}
           `);
 
-                  polygon.addTo(polygons.value);
+                  polygon.addTo(polygons.value as L.LayerGroup);
                }
             });
          };
 
          // Centrar el mapa en una zona seleccionada
-         const centerOnZone = (zone: Zone) => {
+         const centerOnZone = (zone: Zone | null) => {
             if (zone && zone.geo_center) {
                const { coordinates } = zone.geo_center;
                if (coordinates) {

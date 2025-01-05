@@ -107,7 +107,8 @@
          // Validar polígono con la función del store
          watch(
             () => props.currentPolygon,
-            async (polygon) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            async (polygon: any) => {
                if (polygon) {
                   isPolygonValid.value = await zoneStore.validatePolygon(L.geoJSON(polygon));
                } else {

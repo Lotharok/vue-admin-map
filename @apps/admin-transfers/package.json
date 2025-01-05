@@ -5,8 +5,8 @@
    "type": "module",
    "scripts": {
       "dev": "npm run lint && vite",
-      "build": "npm run lint && vue-tsc -b && vite build",
-      "builddev": "npm run lint && vue-tsc -b && vite build --mode development",
+      "build": "npm run lint && vue-tsc -b && vite build --base=https://test-b2b2c-assets.s3.us-east-1.amazonaws.com/Scripts/admin-complementarios/admin-transfers/",
+      "builddev": "npm run lint && vue-tsc -b && vite build --mode development --base=https://test-b2b2c-assets.s3.us-east-1.amazonaws.com/Scripts/admin-complementarios/admin-transfers/",
       "lint": "eslint . --report-unused-disable-directives --max-warnings 0"
    },
    "dependencies": {

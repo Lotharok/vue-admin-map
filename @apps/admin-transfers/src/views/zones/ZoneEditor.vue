@@ -37,7 +37,8 @@
          const route = useRoute();
          const router = useRouter();
          const { selectedZone } = storeToRefs(zoneStore);
-         const currentPolygon = ref(null); // El polígono actual que está siendo dibujado o editado
+         // eslint-disable-next-line @typescript-eslint/no-explicit-any
+         const currentPolygon = ref<any>(null); // El polígono actual que está siendo dibujado o editado
 
          // Función para manejar el polígono que se dibuja en el mapa
          // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -77,7 +78,9 @@
                   currentPolygon.value = zoneStore.selectedZone.shape_area; // Cargar polígono si está disponible
                }
             } else {
-               zoneStore.setSelectedZone(null);
+               /// TODO: Corregir
+               currentPolygon.value = {};
+               zoneStore.setSelectedZone({} as Zone);
             }
          });
 

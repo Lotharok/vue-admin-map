@@ -36,6 +36,10 @@
          const drawnItems = new L.FeatureGroup();
          const polygons = ref<L.LayerGroup | null>(null); // Capa para los polígonos
 
+         const getMap = () => {
+            return map.value as L.Map;
+         };
+
          // Renderizar las zonas actuales
          const renderZones = () => {
             if (!polygons.value) {
@@ -54,7 +58,7 @@
                       Zoom: ${zone.zoom_level}
                    `);
 
-                  polygon.addTo(polygons.value);
+                  polygon.addTo(polygons.value as L.LayerGroup);
                }
             });
          };
@@ -65,15 +69,17 @@
          };
 
          // Establecer el polígono actual si se pasa desde el padre
-         const setPolygon = (polygon) => {
+         // eslint-disable-next-line @typescript-eslint/no-explicit-any
+         const setPolygon = (polygon: any) => {
             if (polygon && map.value) {
                // El polígono pasado desde el padre es un objeto Leaflet
                const geoJsonLayer = L.geoJSON(polygon, {
                   style: { color: "red", weight: 3 },
                   onEachFeature: function (feature, layer) {
+                     console.log(feature);
                      layer.addTo(drawnItems);
                   },
-               }).addTo(map.value);
+               }).addTo(getMap());
                map.value?.fitBounds(geoJsonLayer.getBounds()); // Ajustar el mapa para ver el polígono
             }
          };
@@ -90,13 +96,15 @@
 
             L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
                maxZoom: 18,
-            }).addTo(map.value);
+            }).addTo(getMap());
 
-            polygons.value = L.layerGroup().addTo(map.value);
+            polygons.value = L.layerGroup().addTo(getMap());
             map.value.addLayer(drawnItems);
 
             // Agregar capa de dibujo
-            L.control.layers(null, { "Draw Layer": drawnItems, Zonas: polygons.value }).addTo(map.value);
+            L.control
+               .layers(undefined, { "Draw Layer": drawnItems, Zonas: polygons.value as L.LayerGroup })
+               .addTo(getMap());
 
             // Control de dibujo
             const drawControl = new L.Control.Draw({
@@ -104,7 +112,6 @@
                   featureGroup: drawnItems,
                },
                draw: {
-                  polygon: true,
                   polyline: false,
                   rectangle: false,
                   circle: false,

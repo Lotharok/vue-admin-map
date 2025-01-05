@@ -37,7 +37,8 @@ export default (opts: { mode: string }) => {
                      id.includes("/pinia/") ||
                      id.includes("/jose/") ||
                      id.includes("/axios/") ||
-                     id.includes("/swiper/")
+                     id.includes("/swiper/") ||
+                     id.includes("/bootstrap/")
                   ) {
                      return "vendor";
                   }

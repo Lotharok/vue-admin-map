@@ -41,6 +41,9 @@ importers:
       '@types/leaflet':
         specifier: ^1.9.15
         version: 1.9.15
+      '@types/leaflet-draw':
+        specifier: ^1.0.11
+        version: 1.0.11
       '@types/node':
         specifier: ^22.10.5
         version: 22.10.5
@@ -723,6 +726,9 @@ packages:
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+
+  '@types/leaflet-draw@1.0.11':
+    resolution: {integrity: sha512-dyedtNm3aSmnpi6FM6VSl28cQuvP+MD7pgpXyO3Q1ZOCvrJKmzaDq0P3YZTnnBs61fQCKSnNYmbvCkDgFT9FHQ==}
 
   '@types/leaflet@1.9.15':
     resolution: {integrity: sha512-7UuggAuAs+mva66gtf2OTB1nEhzU/9JED93TIaOEgvFMvG/dIGQaukHE7izHo1Zd+Ko1L4ETUw7TBc8yUxevpg==}
@@ -2277,6 +2283,10 @@ snapshots:
   '@types/geojson@7946.0.15': {}
 
   '@types/json-schema@7.0.15': {}
+
+  '@types/leaflet-draw@1.0.11':
+    dependencies:
+      '@types/leaflet': 1.9.15
 
   '@types/leaflet@1.9.15':
     dependencies:
