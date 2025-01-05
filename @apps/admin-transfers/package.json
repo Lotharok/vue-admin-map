@@ -19,7 +19,6 @@
       "leaflet-draw": "^1.0.4",
       "pinia": "catalog:",
       "vue": "catalog:",
-      "vue-leaflet": "^0.1.0",
       "vue-router": "catalog:"
    },
    "devDependencies": {
